@@ -9,12 +9,12 @@ public class PhaseSpec extends Specification {
 	
 	def "simple phase evolution"() {
 		given:
-		LifecycleStateMachine machine = new LifecycleStateMachine();
+		Lifecycle lc = new Lifecycle();
 
 		when:
-			machine.phase.requestTransition(PhaseTransition.Submit)
-			machine.phase.requestTransition(PhaseTransition.Rejected)
+			lc.phase.requestTransition(lc, Transition.Submit)
+			lc.phase.requestTransition(lc, Transition.Rejected)
 		then:
-			machine.phase.name == "Failed"
+			lc.phase.name == "Failed"
 	}
 }

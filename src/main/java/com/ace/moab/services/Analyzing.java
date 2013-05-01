@@ -3,23 +3,19 @@ package com.ace.moab.services;
 /**
  * Encapsulates all phase-transition logic that applies during the Analyzing phase.
  */
-public class Analyzing extends ServicePhase {
+public class Analyzing extends Phase {
 	
-    public Analyzing(LifecycleStateMachine lsm) {
-        super(lsm);
-    }
-
-	public void requestTransition(PhaseTransition transition) throws InvalidTransitionException {
+	public void requestTransition(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
 			case Accepted:
-				lsm.setPhase(lsm.deploying);
+				lifecycle.setPhase(new Deploying());
 				break;
 			case Rejected:
 			case Terminate:
-				lsm.setPhase(lsm.failed);
+				lifecycle.setPhase(new Failed());
 				break;
 			default:
-				rejectTransition(transition);
+				rejectTransition(lifecycle, transition);
 		}
 	}
 

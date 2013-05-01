@@ -3,20 +3,16 @@ package com.ace.moab.services;
 /**
  * Encapsulates all phase-transition logic that applies during the Terminated phase.
  */
-public class Terminated extends ServicePhase {
+public class Terminated extends Phase {
 
-	public Terminated(LifecycleStateMachine lsm) {
-		super(lsm);
-	}
-
-	public void requestTransition(PhaseTransition transition) throws InvalidTransitionException {
+	public void requestTransition(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
 			case Purge:
 			case AutoPurge:
-				lsm.setPhase(lsm.deleted);
+				lifecycle.setPhase(new Deleted());
 				break;
 			default:
-				rejectTransition(transition);
+				rejectTransition(lifecycle, transition);
 		}
 	}
 
