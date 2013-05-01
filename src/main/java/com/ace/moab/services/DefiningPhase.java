@@ -5,13 +5,12 @@ package com.ace.moab.services;
  */
 public class DefiningPhase extends Phase {
 
-	public void requestTransition(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
+	public Phase getNextPhase(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
 			case Submit:
-				lifecycle.setPhase(new AnalyzingPhase());
-				break;
+				return new AnalyzingPhase();
 			default:
-				rejectTransition(lifecycle, transition);
+				return invalid(lifecycle, transition);
 		}
 	}
 

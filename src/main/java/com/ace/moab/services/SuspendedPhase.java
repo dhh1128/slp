@@ -5,18 +5,17 @@ package com.ace.moab.services;
  */
 public class SuspendedPhase extends Phase {
 
-	public void requestTransition(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
+	public Phase getNextPhase(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
 			case Blocked:
 			case Unblock:
-				lifecycle.setPhase(new DeployingPhase()); //todo: fix
-				break;
+				return new DeployingPhase(); //todo: fix
 			case Terminate:
-				lifecycle.setPhase(new CleaningPhase());
+				return new CleaningPhase();
 			case FinishedDeploying:
-				lifecycle.setPhase(new DeployedPhase());
+				return new DeployedPhase();
 			default:
-				rejectTransition(lifecycle, transition);
+				return invalid(lifecycle, transition);
 		}
 	}
 

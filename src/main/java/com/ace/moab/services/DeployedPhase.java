@@ -5,22 +5,20 @@ package com.ace.moab.services;
  */
 public class DeployedPhase extends Phase {
 
-	public void requestTransition(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
+	public Phase getNextPhase(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
 			case Pause:
 			case Damaged:
-				lifecycle.setPhase(new SuspendedPhase());
-				break;
+				return new SuspendedPhase();
 			case Expired:
 			case Terminate:
-				lifecycle.setPhase(new CleaningPhase());
-				break;
+				return new CleaningPhase();
 			case AutoMigrate:
 			case ManualMigrate:
 			case Modify:
-				lifecycle.setPhase(new AnalyzingPhase());
+				return new AnalyzingPhase();
 			default:
-				rejectTransition(lifecycle, transition);
+				return invalid(lifecycle, transition);
 		}
 	}
 

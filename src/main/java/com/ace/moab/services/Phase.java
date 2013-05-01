@@ -6,14 +6,14 @@ package com.ace.moab.services;
  */
 public abstract class Phase {
 
-	protected void rejectTransition(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
+	protected Phase invalid(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		throw new InvalidTransitionException(lifecycle.getPhase().name, transition.toString());
 	}
 
 	public final String name = this.getClass().getSimpleName().toLowerCase().replace("phase", "");
 
-	/*not public!*/ void requestTransition(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
-		rejectTransition(lifecycle, transition);
+	/*not public!*/ Phase getNextPhase(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
+		return invalid(lifecycle, transition);
 	}
 
 	/**

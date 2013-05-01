@@ -5,10 +5,10 @@ package com.ace.moab.services;
  */
 public class CleaningPhase extends Phase {
 
-	public void requestTransition(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
+	public Phase getNextPhase(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
 			default:
-				rejectTransition(lifecycle, transition);
+				return invalid(lifecycle, transition);
 		}
 	}
 
