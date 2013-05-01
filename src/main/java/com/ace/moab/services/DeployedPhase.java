@@ -3,22 +3,22 @@ package com.ace.moab.services;
 /**
  * Encapsulates all phase-transition logic that applies during the Deployed phase.
  */
-public class Deployed extends Phase {
+public class DeployedPhase extends Phase {
 
 	public void requestTransition(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
 			case Pause:
 			case Damaged:
-				lifecycle.setPhase(new Suspended());
+				lifecycle.setPhase(new SuspendedPhase());
 				break;
 			case Expired:
 			case Terminate:
-				lifecycle.setPhase(new Cleaning());
+				lifecycle.setPhase(new CleaningPhase());
 				break;
 			case AutoMigrate:
 			case ManualMigrate:
 			case Modify:
-				lifecycle.setPhase(new Analyzing());
+				lifecycle.setPhase(new AnalyzingPhase());
 			default:
 				rejectTransition(lifecycle, transition);
 		}

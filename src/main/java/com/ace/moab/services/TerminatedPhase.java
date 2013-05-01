@@ -1,14 +1,15 @@
 package com.ace.moab.services;
 
 /**
- * Encapsulates all phase-transition logic that applies during the Defining phase.
+ * Encapsulates all phase-transition logic that applies during the Terminated phase.
  */
-public class Defining extends Phase {
+public class TerminatedPhase extends Phase {
 
 	public void requestTransition(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
-			case Submit:
-				lifecycle.setPhase(new Analyzing());
+			case Purge:
+			case AutoPurge:
+				lifecycle.setPhase(new DeletedPhase());
 				break;
 			default:
 				rejectTransition(lifecycle, transition);

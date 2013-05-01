@@ -3,7 +3,7 @@ package com.ace.moab.services;
 public class Lifecycle {
 
 	public Lifecycle() {
-		phase = new Defining();
+		phase = new DefiningPhase();
 	}
 
 	private Phase phase;
@@ -12,8 +12,12 @@ public class Lifecycle {
 		return phase;
 	}
 
-	void setPhase(Phase value) {
+	/*not public!*/ void setPhase(Phase value) {
 		phase = value;
+	}
+
+	public void requestTransition(Transition transition) throws InvalidTransitionException {
+		phase.requestTransition(this, transition);
 	}
 
 }

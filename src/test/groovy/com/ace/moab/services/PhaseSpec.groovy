@@ -11,10 +11,13 @@ public class PhaseSpec extends Specification {
 		given:
 		Lifecycle lc = new Lifecycle();
 
+		expect:
+		lc.phase.name == "defining"
+
 		when:
-			lc.phase.requestTransition(lc, Transition.Submit)
-			lc.phase.requestTransition(lc, Transition.Rejected)
+			lc.requestTransition(Transition.Submit)
+			lc.requestTransition(Transition.Rejected)
 		then:
-			lc.phase.name == "Failed"
+			lc.phase.name == "failed"
 	}
 }

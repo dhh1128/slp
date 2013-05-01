@@ -1,25 +1,25 @@
 package com.ace.moab.services;
 
 /**
- * Encapsulates all phase-transition logic that applies during the Deploying phase.
+ * Encapsulates all phase-transition logic that applies during the Analyzing phase.
  */
-public class Deploying extends Phase {
-
+public class AnalyzingPhase extends Phase {
+	
 	public void requestTransition(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
-			case Blocked:
-			case Unblock:
-				//lifecycle.setPhase(new deploying); //todo: fix
+			case Accepted:
+				lifecycle.setPhase(new DeployingPhase());
 				break;
+			case Rejected:
 			case Terminate:
-				lifecycle.setPhase(new Cleaning());
-			case FinishedDeploying:
-				lifecycle.setPhase(new Deployed());
+				lifecycle.setPhase(new FailedPhase());
+				break;
 			default:
 				rejectTransition(lifecycle, transition);
 		}
 	}
 
+	@Override
 	public boolean isStable() {
 		return false;
 	}
