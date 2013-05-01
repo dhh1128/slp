@@ -1,0 +1,38 @@
+[
+	{
+		"id":"pool1",
+		"name":"My first pool",
+		"nodes":[
+			{
+				"id":"node1",
+				"socketCount":2,
+				"coresPerSocket":4
+			},
+			{
+				"id":"node2",
+				"socketCount":1,
+				"coresPerSocket":2
+			},
+			{
+				"id":"node3",
+				"socketCount":2,
+				"coresPerSocket":1
+			},
+			{
+				"id":"node4",
+				"socketCount":4,
+				"coresPerSocket":8
+			}
+		]
+	},
+	{
+		"id":"pool2",
+		"nodes":[
+			{
+				"id":"node1",
+				"socketCount":2,
+				"coresPerSocket":4
+			}
+		]
+	}
+]
