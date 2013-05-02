@@ -16,7 +16,7 @@ public class PhaseSpec extends Specification {
 
 		when:
 		lc.requestTransition(Transition.Submit)
-		lc.requestTransition(Transition.Rejected)
+		lc.requestTransition(Transition.Reject)
 
 		then:
 		lc.phase.name == "failed"

@@ -8,9 +8,9 @@ public class DeployedPhase extends Phase {
 	public Phase getNextPhase(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
 			case Pause:
-			case Damaged:
+			case DetectDamage:
 				return new SuspendedPhase();
-			case Expired:
+			case Expire:
 			case Terminate:
 				return new CleaningPhase();
 			case AutoMigrate:

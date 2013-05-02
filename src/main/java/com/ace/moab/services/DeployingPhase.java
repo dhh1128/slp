@@ -11,7 +11,7 @@ public class DeployingPhase extends Phase {
                 return new BlockedPhase();
 			case Terminate:
 				return new CleaningPhase();
-			case Complete:
+			case Deploy:
 				return new DeployedPhase();
 			default:
 				return invalid(lifecycle, transition);

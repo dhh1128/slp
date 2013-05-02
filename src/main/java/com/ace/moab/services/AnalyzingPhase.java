@@ -17,27 +17,45 @@ public class AnalyzingPhase extends Phase {
 
 	public Phase getNextPhase(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
-			case Accepted:
-                if (transition == Transition.OnBoard) {
-                    return new DeployedPhase();
-                } else {
-				    return new DeployingPhase();
+			case Accept:
+                switch (fromTransition) {
+                    case Submit:
+                    case Modify:
+                    case ManualMigrate:
+                    case AutoMigrate:
+                        return new DeployingPhase();
+                    default:
+                        throw new InvalidTransitionException(String.format(
+                                "Services in the %s phase cannot accept a \"%s\" transition after \"%s\".",
+                                name, transition.toString(), fromTransition.toString()));
                 }
-			case Rejected:
+            case Adopt:
+                if (fromTransition == Transition.Onboard) {
+                    return new DeployedPhase();
+                }
+                break;
+			case Reject:
 			case Terminate:
                 if (fromTransition == Transition.Submit) {
 				    return new FailedPhase();
                 } else {
                     return new CleaningPhase();
                 }
-            case CantModify:
-                return new DeployedPhase();
-            case CantResume:
-                return new SuspendedPhase();
+            case RejectModify:
+                if (fromTransition == Transition.Modify) {
+                    return new DeployedPhase();
+                }
+                break;
+            case RejectResume:
+                if (fromTransition == Transition.Resume) {
+                    return new SuspendedPhase();
+                }
+                break;
 			default:
-				return invalid(lifecycle, transition);
+                break;
 		}
-	}
+        return invalid(lifecycle, transition);
+    }
 
 	@Override
 	public boolean isStable() {

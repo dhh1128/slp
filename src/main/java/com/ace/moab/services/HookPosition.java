@@ -1,8 +1,7 @@
 package com.ace.moab.services;
 
 /**
- * Created by: Daniel Hardman
- * Date: 2013-05
+ * Describes possible semantics for a hook -- does it run before or after a transition?
  */
 public enum HookPosition {
 	/**
