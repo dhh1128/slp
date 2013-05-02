@@ -72,7 +72,8 @@ public class PhaseSpec extends Specification {
 		sb.toString() ==~ "hook[12] Submit Pre\nhook[12] Submit Pre\n*"
 
 		when:
-		// This should guarantee that the Early hook completes.
+		// This should guarantee that the Early hook completes. TO DO: add a method to lifecycle
+		// so we can wait for all hooks, so we don't have to depend on this 99% but not 100% method.
 		Thread.sleep(100);
 
 		then:

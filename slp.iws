@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e378c80-a92c-4abd-9b4e-0dec86027a21" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/HookRunner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/LifecycleException.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slp.iws" afterPath="$PROJECT_DIR$/slp.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/InvalidTransitionException.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/InvalidTransitionException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Lifecycle.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Lifecycle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Phase.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Phase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/TransitionHook.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/TransitionHook.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/groovy/com/ace/moab/services/PhaseSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/com/ace/moab/services/PhaseSpec.groovy" />
     </list>
     <ignored path="slp.iws" />
@@ -27,21 +21,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/test/groovy/com/ace/moab/services/PhaseSpec.groovy" line="64" class="com.ace.moab.services.PhaseSpec" package="com.ace.moab.services">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -116,7 +95,7 @@
       <file leaf-file-name="PhaseSpec.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/groovy/com/ace/moab/services/PhaseSpec.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="0" selection-start="1115" selection-end="1115" vertical-scroll-proportion="0.24865831">
+            <state line="64" column="0" selection-start="1536" selection-end="1536" vertical-scroll-proportion="1.5563506">
               <folding />
             </state>
           </provider>
@@ -530,7 +509,11 @@
       <created>1367430604346</created>
       <updated>1367430604346</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="first working hooks and a unit test that exercises them">
+      <created>1367459635950</created>
+      <updated>1367459635950</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -599,7 +582,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="work on adding hooks around transitions" />
+    <option name="LAST_COMMIT_MESSAGE" value="first working hooks and a unit test that exercises them" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -615,6 +598,7 @@
     <MESSAGE value="first working unit test; phases no longer store backref to lifecycle" />
     <MESSAGE value="more refactors for clarity" />
     <MESSAGE value="work on adding hooks around transitions" />
+    <MESSAGE value="first working hooks and a unit test that exercises them" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -754,7 +738,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/groovy/com/ace/moab/services/PhaseSpec.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="1115" selection-end="1115" vertical-scroll-proportion="0.24865831">
+        <state line="64" column="0" selection-start="1536" selection-end="1536" vertical-scroll-proportion="1.5563506">
           <folding />
         </state>
       </provider>
