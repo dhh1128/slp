@@ -7,13 +7,10 @@ public class SuspendedPhase extends Phase {
 
 	public Phase getNextPhase(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
-			case Blocked:
-			case Unblock:
-				return new DeployingPhase(); //todo: fix
+			case Resume:
+				return new AnalyzingPhase(transition);
 			case Terminate:
 				return new CleaningPhase();
-			case FinishedDeploying:
-				return new DeployedPhase();
 			default:
 				return invalid(lifecycle, transition);
 		}

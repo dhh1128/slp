@@ -8,7 +8,7 @@ public class DefiningPhase extends Phase {
 	public Phase getNextPhase(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
 			case Submit:
-				return new AnalyzingPhase();
+				return new AnalyzingPhase(transition);
 			default:
 				return invalid(lifecycle, transition);
 		}

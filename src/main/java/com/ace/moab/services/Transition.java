@@ -12,7 +12,9 @@ public enum Transition {
 	AutoPurge,
 	Terminate,
 	Unblock,
-	Blocked,
+	Block,
+    Complete,
+    OnBoard,
 	CantModify,
 	CantResume,
 	AutoMigrate,
@@ -21,6 +23,6 @@ public enum Transition {
 	Expired,
 	Pause,
 	Damaged,
+    Tweak,
 	Resume,
-	FinishedDeploying
 }

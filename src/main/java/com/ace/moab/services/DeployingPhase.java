@@ -7,12 +7,11 @@ public class DeployingPhase extends Phase {
 
 	public Phase getNextPhase(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
-			case Blocked:
-			case Unblock:
-				return this; //todo: fix
+			case Block:
+                return new BlockedPhase();
 			case Terminate:
 				return new CleaningPhase();
-			case FinishedDeploying:
+			case Complete:
 				return new DeployedPhase();
 			default:
 				return invalid(lifecycle, transition);

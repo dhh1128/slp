@@ -10,6 +10,10 @@ public class FailedPhase extends Phase {
 			case Purge:
 			case AutoPurge:
 				return new DeletedPhase();
+            case Tweak:
+                return new DefiningPhase();
+            case Submit:
+                return new AnalyzingPhase(transition);
 			default:
 				return invalid(lifecycle, transition);
 		}

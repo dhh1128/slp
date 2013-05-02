@@ -16,7 +16,7 @@ public class DeployedPhase extends Phase {
 			case AutoMigrate:
 			case ManualMigrate:
 			case Modify:
-				return new AnalyzingPhase();
+				return new AnalyzingPhase(transition);
 			default:
 				return invalid(lifecycle, transition);
 		}
