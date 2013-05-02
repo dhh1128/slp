@@ -2,36 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e378c80-a92c-4abd-9b4e-0dec86027a21" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/HookPosition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/TransitionHook.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Analyzing$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Analyzing.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Cleaning$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Cleaning.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Defining$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Defining.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Deleted.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Deployed$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Deployed.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Deploying$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Deploying.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Failed$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Failed.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Suspended$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Suspended.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Terminated$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/slp/com/ace/moab/services/Terminated.class" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/HookRunner.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/LifecycleException.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slp.iws" afterPath="$PROJECT_DIR$/slp.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/AnalyzingPhase.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/AnalyzingPhase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/CleaningPhase.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/CleaningPhase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/DefiningPhase.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/DefiningPhase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/DeployedPhase.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/DeployedPhase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/DeployingPhase.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/DeployingPhase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/FailedPhase.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/FailedPhase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/InvalidTransitionException.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/InvalidTransitionException.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Lifecycle.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Lifecycle.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Phase.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Phase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/SuspendedPhase.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/SuspendedPhase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/TerminatedPhase.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/TerminatedPhase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/TransitionHook.java" afterPath="$PROJECT_DIR$/src/main/java/com/ace/moab/services/TransitionHook.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/groovy/com/ace/moab/services/PhaseSpec.groovy" afterPath="$PROJECT_DIR$/src/test/groovy/com/ace/moab/services/PhaseSpec.groovy" />
     </list>
     <ignored path="slp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,6 +27,21 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/test/groovy/com/ace/moab/services/PhaseSpec.groovy" line="64" class="com.ace.moab.services.PhaseSpec" package="com.ace.moab.services">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -89,51 +82,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CleaningPhase.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/CleaningPhase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="16" selection-start="180" selection-end="180" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefiningPhase.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/DefiningPhase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="23" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeletedPhase.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/DeletedPhase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="13" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeployedPhase.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/DeployedPhase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="9" selection-start="582" selection-end="582" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeployingPhase.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/DeployingPhase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="532" selection-end="532" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FailedPhase.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/FailedPhase.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -143,15 +91,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Lifecycle.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Lifecycle.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/Lifecycle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="55" selection-start="2385" selection-end="2385" vertical-scroll-proportion="0.51699466">
+            <state line="177" column="0" selection-start="5810" selection-end="5810" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1178#1317#0" expanded="true" />
-                <element signature="e#1309#1310#0" expanded="true" />
+                <element signature="e#1396#1535#0" expanded="true" />
+                <element signature="e#1527#1528#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Phase.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/Phase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="5" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhaseSpec.groovy" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/groovy/com/ace/moab/services/PhaseSpec.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="55" column="0" selection-start="1115" selection-end="1115" vertical-scroll-proportion="0.24865831">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InvalidTransitionException.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/InvalidTransitionException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="5" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LifecycleException.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/LifecycleException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="0" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -159,7 +143,16 @@
       <file leaf-file-name="TransitionHook.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/TransitionHook.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="0" selection-start="1360" selection-end="1360" vertical-scroll-proportion="0.0">
+            <state line="38" column="5" selection-start="1681" selection-end="1681" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HookRunner.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/HookRunner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="5" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -196,12 +189,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Deployed.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Analyzing.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/DeletedPhase.java" />
-        <option value="$PROJECT_DIR$/src/test/groovy/com/ace/moab/services/PhaseSpec.groovy" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/HookPosition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Phase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/AnalyzingPhase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/CleaningPhase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/DefiningPhase.java" />
@@ -210,8 +197,14 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/FailedPhase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/SuspendedPhase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/TerminatedPhase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Lifecycle.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/TransitionHook.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/TransitionException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/LifecycleException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/InvalidTransitionException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Phase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/Lifecycle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ace/moab/services/HookRunner.java" />
+        <option value="$PROJECT_DIR$/src/test/groovy/com/ace/moab/services/PhaseSpec.groovy" />
       </list>
     </option>
   </component>
@@ -533,7 +526,11 @@
       <created>1367425004713</created>
       <updated>1367425004713</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="work on adding hooks around transitions">
+      <created>1367430604346</created>
+      <updated>1367430604346</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -602,7 +599,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="more refactors for clarity" />
+    <option name="LAST_COMMIT_MESSAGE" value="work on adding hooks around transitions" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -617,6 +614,7 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="first working unit test; phases no longer store backref to lifecycle" />
     <MESSAGE value="more refactors for clarity" />
+    <MESSAGE value="work on adding hooks around transitions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -645,41 +643,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/Transition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="12" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/groovy/com/ace/moab/services/PhaseSpec.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="37" selection-start="400" selection-end="400" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/InvalidTransitionException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="119" selection-end="119" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/HookPosition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/Phase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="27" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/AnalyzingPhase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="0" selection-start="418" selection-end="418" vertical-scroll-proportion="-4.2">
@@ -743,21 +706,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/LifecycleException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/InvalidTransitionException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="5" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/Phase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="5" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/TransitionHook.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="1360" selection-end="1360" vertical-scroll-proportion="0.0">
+        <state line="38" column="5" selection-start="1681" selection-end="1681" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/HookRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="5" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ace/moab/services/Lifecycle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="55" selection-start="2385" selection-end="2385" vertical-scroll-proportion="0.51699466">
+        <state line="177" column="0" selection-start="5810" selection-end="5810" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1178#1317#0" expanded="true" />
-            <element signature="e#1309#1310#0" expanded="true" />
+            <element signature="e#1396#1535#0" expanded="true" />
+            <element signature="e#1527#1528#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/groovy/com/ace/moab/services/PhaseSpec.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="0" selection-start="1115" selection-end="1115" vertical-scroll-proportion="0.24865831">
+          <folding />
         </state>
       </provider>
     </entry>

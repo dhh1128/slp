@@ -7,7 +7,7 @@ package com.ace.moab.services;
 public abstract class Phase {
 
 	protected Phase invalid(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
-		throw new InvalidTransitionException(lifecycle.getPhase().name, transition.toString());
+		throw new InvalidTransitionException(lifecycle.getPhase(), transition);
 	}
 
 	public final String name = this.getClass().getSimpleName().toLowerCase().replace("phase", "");
