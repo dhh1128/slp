@@ -23,10 +23,6 @@ public class Lifecycle {
 		return phase;
 	}
 
-	/*not public!*/ void setPhase(Phase value) {
-		phase = value;
-	}
-
 	private static ExecutorService _executor;
 	private static ThreadGroup _threadGroup;
 	private static ThreadFactory _threadFactory;
@@ -65,6 +61,14 @@ public class Lifecycle {
 	 * @throws InvalidTransitionException
 	 */
 	public void requestTransition(Transition transition) throws LifecycleException {
+        // Figure out what phase are we supposed to transition to. This call will
+        // throw an exception if transition makes no sense. We make this call before
+        // we ever lock, because we don't need to lock to throw an exception.
+        Phase next = phase.getNextPhase(this, transition);
+
+        // TO DO: consider an optimization that prevents multiple submit/terminate/unblock requests in quick
+        // succession. Could be done by storing "activeTransition" field on Lifecycle (possibly atomic update?)
+        // and then check for it when we get a transition.
 		try {
 			if (!transitionLock.tryLock(MAX_SECS_TO_WAIT_ON_TRANSITION_LOCK, TimeUnit.SECONDS)) {
 				throw new LifecycleException(String.format("Unable to acquire transition lock within %d seconds.", MAX_SECS_TO_WAIT_ON_TRANSITION_LOCK));
@@ -75,9 +79,6 @@ public class Lifecycle {
 			throw lex;
 		}
 		try {
-			// Figure out what phase are we supposed to transition to. This call will
-			// throw an exception if transition makes no sense.
-			Phase next = phase.getNextPhase(this, transition);
 
 			// Simplest case = no hooks. Transition is immediate.
 			List<TransitionHook> activeHooks = hooks;

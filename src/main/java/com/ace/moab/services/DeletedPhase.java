@@ -5,7 +5,12 @@ package com.ace.moab.services;
  */
 public class DeletedPhase extends Phase {
 
-	public boolean isStable() {
+    // This phase doesn't have any member variables, so there's no point
+    // in creating a new object every time we want the phase. Just use
+    // the singleton.
+    static final DeletedPhase Instance = new DeletedPhase();
+
+    public boolean isStable() {
 		return true;
 	}
 }

@@ -40,6 +40,15 @@ public enum Transition {
      */
 	Terminate,
     /**
+     * If a service is in {@link BlockedPhase} after {@link CleaningPhase}, and user specifies
+     * that cleaning should be abandoned, this transition leads to {@link TerminatedPhase}.
+     */
+    Abandon,
+    /**
+     * All resources relating to the service are released. Leads to {@link TerminatedPhase}.
+     */
+    Clean,
+    /**
      * A request has been received for a service in the {@link BlockedPhase} to restart the
      * deployment process. Leads to {@link DeployingPhase}.
      */

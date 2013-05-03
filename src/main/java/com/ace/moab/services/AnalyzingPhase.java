@@ -23,7 +23,7 @@ public class AnalyzingPhase extends Phase {
                     case Modify:
                     case ManualMigrate:
                     case AutoMigrate:
-                        return new DeployingPhase();
+                        return DeployingPhase.Instance;
                     default:
                         throw new InvalidTransitionException(String.format(
                                 "Services in the %s phase cannot accept a \"%s\" transition after \"%s\".",
@@ -31,24 +31,24 @@ public class AnalyzingPhase extends Phase {
                 }
             case Adopt:
                 if (fromTransition == Transition.Onboard) {
-                    return new DeployedPhase();
+                    return DeployedPhase.Instance;
                 }
                 break;
 			case Reject:
 			case Terminate:
                 if (fromTransition == Transition.Submit) {
-				    return new FailedPhase();
+				    return FailedPhase.Instance;
                 } else {
-                    return new CleaningPhase();
+                    return CleaningPhase.Instance;
                 }
             case RejectModify:
                 if (fromTransition == Transition.Modify) {
-                    return new DeployedPhase();
+                    return DeployedPhase.Instance;
                 }
                 break;
             case RejectResume:
                 if (fromTransition == Transition.Resume) {
-                    return new SuspendedPhase();
+                    return SuspendedPhase.Instance;
                 }
                 break;
 			default:

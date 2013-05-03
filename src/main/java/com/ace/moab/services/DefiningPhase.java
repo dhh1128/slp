@@ -5,14 +5,20 @@ package com.ace.moab.services;
  */
 public class DefiningPhase extends Phase {
 
-	public Phase getNextPhase(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
+    // This phase doesn't have any member variables, so there's no point
+    // in creating a new object every time we want the phase. Just use
+    // the singleton.
+    static final DefiningPhase Instance = new DefiningPhase();
+
+    public Phase getNextPhase(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
 			case Submit:
 				return new AnalyzingPhase(transition);
 			default:
-				return invalid(lifecycle, transition);
+                break;
 		}
-	}
+        return invalid(lifecycle, transition);
+    }
 
 	public boolean isStable() {
 		return true;
