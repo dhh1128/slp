@@ -13,6 +13,7 @@ public class DefiningPhase extends Phase {
     public Phase getNextPhase(Lifecycle lifecycle, Transition transition) throws InvalidTransitionException {
 		switch (transition) {
 			case Submit:
+            case Onboard:
 				return new AnalyzingPhase(transition);
 			default:
                 break;

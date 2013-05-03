@@ -19,7 +19,7 @@ public class DeployedPhase extends Phase {
 			case Terminate:
 				return CleaningPhase.Instance;
 			case AutoMigrate:
-			case ManualMigrate:
+			case Migrate:
 			case Modify:
 				return new AnalyzingPhase(transition);
 			default:

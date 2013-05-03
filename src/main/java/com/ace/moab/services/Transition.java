@@ -88,7 +88,7 @@ public enum Transition {
     /**
      * A user has asked for a service to be migrated. Leads to {@link AnalyzingPhase}.
      */
-    ManualMigrate,
+    Migrate,
     /**
      * A user has asked for a service to be modified (adding or removing resources, changing affinities,
      * or similar). Leads to {@link AnalyzingPhase}.

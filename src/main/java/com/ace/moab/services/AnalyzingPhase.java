@@ -21,8 +21,9 @@ public class AnalyzingPhase extends Phase {
                 switch (fromTransition) {
                     case Submit:
                     case Modify:
-                    case ManualMigrate:
+                    case Migrate:
                     case AutoMigrate:
+                    case Resume:
                         return DeployingPhase.Instance;
                     default:
                         throw new InvalidTransitionException(String.format(
@@ -35,7 +36,11 @@ public class AnalyzingPhase extends Phase {
                 }
                 break;
 			case Reject:
-			case Terminate:
+                if (fromTransition == Transition.Submit || fromTransition == Transition.Onboard) {
+                    return FailedPhase.Instance;
+                }
+                break;
+            case Terminate:
                 if (fromTransition == Transition.Submit) {
 				    return FailedPhase.Instance;
                 } else {

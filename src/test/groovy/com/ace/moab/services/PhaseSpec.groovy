@@ -51,7 +51,7 @@ public class PhaseSpec extends Specification {
 		}
 	}
 
-	def "verify hooks"() {
+	def "pre hooks execute before all others and before returning from requestTransition"() {
 		given:
 		Lifecycle lc = new Lifecycle()
 		List<TransitionHook> hooks = new ArrayList<TransitionHook>();
@@ -79,4 +79,140 @@ public class PhaseSpec extends Specification {
 		then:
 		sb.toString() ==~ "hook[12] Submit Pre\nhook[12] Submit Pre\nhook3 Submit Early\n"
 	}
+
+    def "analyzing phase"() {
+        given:
+        Lifecycle lc = new Lifecycle()
+
+        when:
+        lc.requestTransition(Transition.Submit)
+
+        then:
+        lc.phase.name == "analyzing"
+
+        when:
+        lc.requestTransition(Transition.RejectModify)
+
+        then: "shouldn't be possible to reject modify request unless we were previously deployed"
+        thrown(InvalidTransitionException)
+
+        when:
+        lc.requestTransition(Transition.RejectResume)
+
+        then: "shouldn't be possible to reject resume request unless we were previously deployed"
+        thrown(InvalidTransitionException)
+
+        when:
+        lc.requestTransition(Transition.Adopt)
+
+        then: "shouldn't be possible to adopt unless we were onboarding"
+        thrown(InvalidTransitionException)
+
+        // Finish Deploying
+        when:
+        lc.requestTransition(Transition.Accept)
+        lc.requestTransition(Transition.Deploy)
+
+        then:
+        lc.phase.name == "deployed"
+
+        when:
+        lc.requestTransition(Transition.Migrate)
+
+        then:
+        lc.phase.name == "analyzing"
+
+        when:
+        lc.requestTransition(Transition.Reject)
+
+        then: "shouldn't be possible to do plain rejection unless we are on initial submit or adopt"
+        thrown(InvalidTransitionException)
+
+        when:
+        lc.requestTransition(Transition.Adopt)
+
+        then: "shouldn't be possible to adopt unless we were onboarding"
+        thrown(InvalidTransitionException)
+
+        // Finish migrating
+        when:
+        lc.requestTransition(Transition.Accept)
+        lc.requestTransition(Transition.Deploy)
+
+        then:
+        lc.phase.name == "deployed"
+
+        when:
+        lc.requestTransition(Transition.Pause)
+
+        then:
+        lc.phase.name == "suspended"
+
+        when:
+        lc.requestTransition(Transition.Resume)
+
+        then:
+        lc.phase.name == "analyzing"
+
+        when:
+        lc.requestTransition(Transition.Reject)
+
+        then: "shouldn't be possible to do plain rejection unless we are on initial submit or adopt"
+        thrown(InvalidTransitionException)
+
+        when:
+        lc.requestTransition(Transition.Adopt)
+
+        then: "shouldn't be possible to adopt unless we were onboarding"
+        thrown(InvalidTransitionException)
+
+        // Finish resuming
+        when:
+        lc.requestTransition(Transition.Accept)
+        lc.requestTransition(Transition.Deploy)
+
+        then:
+        lc.phase.name == "deployed"
+
+        when:
+        lc = new Lifecycle()
+        lc.requestTransition(Transition.Onboard)
+
+        then:
+        lc.phase.name == "analyzing"
+
+        when:
+        lc.requestTransition(Transition.RejectModify)
+
+        then: "shouldn't be possible to reject modify request unless we were previously deployed"
+        thrown(InvalidTransitionException)
+
+        when:
+        lc.requestTransition(Transition.RejectResume)
+
+        then: "shouldn't be possible to reject resume request unless we were previously deployed"
+        thrown(InvalidTransitionException)
+
+        when:
+        lc.requestTransition(Transition.Accept)
+
+        then: "shouldn't be possible to do ordinary accept->deploying while onboarding"
+        thrown(InvalidTransitionException)
+
+        // Finish onboarding
+        when:
+        lc.requestTransition(Transition.Adopt)
+
+        then:
+        lc.phase.name == "deployed"
+
+        when:
+        lc = new Lifecycle()
+        lc.requestTransition(Transition.Onboard)
+        lc.requestTransition(Transition.Reject)
+
+        then:
+        lc.phase.name == "failed"
+
+    }
 }
