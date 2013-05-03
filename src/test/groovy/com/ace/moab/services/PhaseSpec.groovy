@@ -29,7 +29,7 @@ public class PhaseSpec extends Specification {
 	}
 
 	class MyTransitionHook extends TransitionHook {
-		StringBuilder sb;
+		final StringBuilder sb;
 		String name;
 		MyTransitionHook(String name, Transition transition, HookPosition pos, StringBuilder sb) {
 			super(transition, pos);
@@ -84,11 +84,8 @@ public class PhaseSpec extends Specification {
         given:
         Lifecycle lc = new Lifecycle()
 
-        when:
-        lc.requestTransition(Transition.Submit)
-
-        then:
-        lc.phase.name == "analyzing"
+        expect:
+        lc.requestTransition(Transition.Submit).name == "analyzing"
 
         when:
         lc.requestTransition(Transition.RejectModify)
@@ -109,18 +106,10 @@ public class PhaseSpec extends Specification {
         thrown(InvalidTransitionException)
 
         // Finish Deploying
-        when:
-        lc.requestTransition(Transition.Accept)
-        lc.requestTransition(Transition.Deploy)
-
-        then:
-        lc.phase.name == "deployed"
-
-        when:
-        lc.requestTransition(Transition.Migrate)
-
-        then:
-        lc.phase.name == "analyzing"
+        expect:
+        lc.requestTransition(Transition.Accept).name == "deploying"
+        lc.requestTransition(Transition.Deploy).name == "deployed"
+        lc.requestTransition(Transition.Migrate).name == "analyzing"
 
         when:
         lc.requestTransition(Transition.Reject)
@@ -135,24 +124,11 @@ public class PhaseSpec extends Specification {
         thrown(InvalidTransitionException)
 
         // Finish migrating
-        when:
-        lc.requestTransition(Transition.Accept)
-        lc.requestTransition(Transition.Deploy)
-
-        then:
-        lc.phase.name == "deployed"
-
-        when:
-        lc.requestTransition(Transition.Pause)
-
-        then:
-        lc.phase.name == "suspended"
-
-        when:
-        lc.requestTransition(Transition.Resume)
-
-        then:
-        lc.phase.name == "analyzing"
+        expect:
+        lc.requestTransition(Transition.Accept).name == "deploying"
+        lc.requestTransition(Transition.Deploy).name == "deployed"
+        lc.requestTransition(Transition.Pause).name == "suspended"
+        lc.requestTransition(Transition.Resume).name == "analyzing"
 
         when:
         lc.requestTransition(Transition.Reject)
@@ -167,12 +143,9 @@ public class PhaseSpec extends Specification {
         thrown(InvalidTransitionException)
 
         // Finish resuming
-        when:
-        lc.requestTransition(Transition.Accept)
-        lc.requestTransition(Transition.Deploy)
-
-        then:
-        lc.phase.name == "deployed"
+        expect:
+        lc.requestTransition(Transition.Accept).name == "deploying"
+        lc.requestTransition(Transition.Deploy).name == "deployed"
 
         when:
         lc = new Lifecycle()
@@ -200,19 +173,57 @@ public class PhaseSpec extends Specification {
         thrown(InvalidTransitionException)
 
         // Finish onboarding
-        when:
-        lc.requestTransition(Transition.Adopt)
-
-        then:
-        lc.phase.name == "deployed"
+        expect:
+        lc.requestTransition(Transition.Adopt).name == "deployed"
 
         when:
         lc = new Lifecycle()
-        lc.requestTransition(Transition.Onboard)
-        lc.requestTransition(Transition.Reject)
 
         then:
-        lc.phase.name == "failed"
+        lc.requestTransition(Transition.Onboard)
 
+        expect:
+        lc.requestTransition(Transition.Reject).name == "failed"
+    }
+
+    def getBlockedVia(Phase previous) {
+        Lifecycle lc = new Lifecycle()
+        lc.requestTransition(Transition.Submit)
+        lc.requestTransition(Transition.Accept)
+        if (previous instanceof CleaningPhase) {
+            lc.requestTransition(Transition.Terminate)
+        }
+        lc.requestTransition(Transition.Block)
+        return lc
+    }
+
+    def "blocked phase"() {
+        given:
+        Lifecycle lc = getBlockedVia(DeployingPhase.Instance)
+
+        when:
+        lc.requestTransition(Transition.Abandon)
+
+        then: "shouldn't be possible to abandon if we're not blocked via cleaning"
+        thrown(InvalidTransitionException)
+
+        expect:
+        lc.requestTransition(Transition.Unblock).name == "deploying"
+        lc.requestTransition(Transition.Terminate).name == "cleaning"
+        lc.requestTransition(Transition.Clean).name == "terminated"
+
+        when:
+        lc = getBlockedVia(CleaningPhase.Instance)
+
+        then:
+        lc.requestTransition(Transition.Unblock).name == "cleaning"
+        lc.requestTransition(Transition.Block).name == "blocked"
+        lc.requestTransition(Transition.Abandon).name == "terminated"
+
+        when:
+        lc = getBlockedVia(CleaningPhase.Instance)
+
+        then:
+        lc.requestTransition(Transition.Terminate).name == "cleaning"
     }
 }

@@ -58,9 +58,10 @@ public class Lifecycle {
 	 * have finished (successfully) by the time this function returns.
 	 *
 	 * @param transition What event or occurrence is triggering this change?
+     * @return new phase
 	 * @throws InvalidTransitionException
 	 */
-	public void requestTransition(Transition transition) throws LifecycleException {
+	public Phase requestTransition(Transition transition) throws LifecycleException {
         // Figure out what phase are we supposed to transition to. This call will
         // throw an exception if transition makes no sense. We make this call before
         // we ever lock, because we don't need to lock to throw an exception.
@@ -195,6 +196,7 @@ public class Lifecycle {
 		} finally {
 			transitionLock.unlock();
 		}
+        return next;
 	}
 
 	private List<TransitionHook> hooks;
